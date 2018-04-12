@@ -1,6 +1,8 @@
-(defun find-if1 (p s) ((if (null s)
+(defun find-if1 (p s) (cond((null s)
                           s)
-                          (if (null (p (car s)))
+                          ((null (funcall p (car s)))
                           (find-if1 p (cdr s)))
                           
-                          (car s)))
+                          (t (car s))))
+
+(print (find-if1 #'atom (list '(A B C) '(h d) 'j 'g)))
